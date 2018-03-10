@@ -6,13 +6,13 @@ class CeasarCipher:
 	''' CeasarCipher worked by shifting alphabets by some offset'''
 	def __init__(self,enc_key):
 		self.enc_key = enc_key
-		self.enc_list = list('abcdefghijklmnopqrstuvwxyz' * 2)
+		self.enc_list = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ' * 2)
 
 	
 	def encrypt(self,msg):
 		if self.enc_key > 15:
 			self.enc_key = self.enc_key % 15
-		msg = msg.lower()
+		msg = msg.upper()
 		enc_msg = []
 		for char in msg:
 			try:
@@ -25,7 +25,7 @@ class CeasarCipher:
 	def decrypt(self,msg):
 		if self.enc_key > 15:
 			self.enc_key = self.enc_key % 15
-		msg = msg.lower()
+		msg = msg.upper()
 		enc_msg = []
 		for char in msg:
 			try:

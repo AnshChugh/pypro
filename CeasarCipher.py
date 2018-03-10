@@ -8,8 +8,7 @@ class CeasarCipher:
 		self.enc_key = enc_key
 		self.enc_list = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ' * 2)
 
-	
-	def encrypt(self,msg):
+	def __crypt(self,msg,mode):
 		if self.enc_key > 15:
 			self.enc_key = self.enc_key % 15
 		msg = msg.upper()
@@ -17,24 +16,20 @@ class CeasarCipher:
 		for char in msg:
 			try:
 				i = self.enc_list.index(char) # this will return ValueError if char is not in self.enc_list
-				enc_msg.append(self.enc_list[i + self.enc_key])
+				if mode == 'encrypt':
+					enc_msg.append(self.enc_list[i + self.enc_key])
+				elif mode == 'decrypt':
+					enc_msg.append(self.enc_list[i - self.enc_key])
 			except ValueError:
 				enc_msg.append(char)
 		return ''.join(map(str,enc_msg))
 
-	def decrypt(self,msg):
-		if self.enc_key > 15:
-			self.enc_key = self.enc_key % 15
-		msg = msg.upper()
-		enc_msg = []
-		for char in msg:
-			try:
-				i = self.enc_list.index(char)
-				enc_msg.append(self.enc_list[i - self.enc_key])
-			except ValueError: # when char is not alphabet
-				enc_msg.append(char)
-		return ''.join(map(str,enc_msg))
+	
+	def encrypt(self,msg):
+		return self.__crypt(msg,'encrypt')
 
+	def decrypt(self,msg):
+		return self.__crypt(msg,'decrypt')
 
 def ui_wrapper():
 	while True:
@@ -72,4 +67,3 @@ def ui_wrapper():
 
 if __name__ == '__main__':
 	ui_wrapper()
-

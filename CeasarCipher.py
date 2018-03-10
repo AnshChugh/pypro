@@ -1,6 +1,6 @@
 '''Final Plan to add More Security by adding number encrpytion and '''
 '''maybe security features like inverted alphabet order  '''
-
+import sys
 class CeasarCipher:
 
 	''' CeasarCipher worked by shifting alphabets by some offset'''
@@ -36,10 +36,36 @@ class CeasarCipher:
 		return ''.join(map(str,enc_msg))
 
 
-if __name__ == '__main__':
-	enc = CeasarCipher(4)
-	enc_str = enc.encrypt('myName is anonymouse 007')
-	print('Encrypter string : %s'%enc_str)
-	print('Decrypted string : %s'%enc.decrypt(enc_str))
+def ui_wrapper():
+	while True:
+		print('Welcome to ceasar cipher\ntype key \n')
+		while True:
+			try:
+				key = int(input('\n\t'))
+				enc_model = CeasarCipher(key)
+			except ValueError:
+				print('Enter Valid Key in numbers')
+				break
+			while True:
+				print('\npress 1 for encryption\n2 for decryption\n3 for quit')
+				while True:
+					try:
+						inp = int(input('\n\t'))
+						break
+					except ValueError:
+						print('Enter Valid option')
+				if inp == 1:
+					print('\ntype in the string you want to encrpyt\n')
+					enc_str = input('\t')
+					print('Encrypted String :\t%s'%enc_model.encrypt(enc_str))
+				if inp == 2:
+					print('\ntype in the string you want to decrpyt\n')
+					enc_str = input('\t')
+					print('Decrypted String :\t%s'%enc_model.decrypt(enc_str))
+				if inp == 3:
+					exit()
 
+
+if __name__ == '__main__':
+	ui_wrapper()
 

@@ -1,6 +1,6 @@
 '''Final Plan to add More Security by adding number encrpytion and '''
 '''maybe security features like inverted alphabet order  '''
-import sys
+
 class CeasarCipher:
 
 	''' CeasarCipher worked by shifting alphabets by some offset'''

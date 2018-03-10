@@ -38,30 +38,34 @@ class CeasarCipher:
 
 def ui_wrapper():
 	while True:
-		print('Welcome to ceasar cipher\ntype key \n')
+		print('Welcome to ceasar cipher type key \n')
 		while True:
 			try:
-				key = int(input('\n\t'))
+				key = int(input('\t'))
 				enc_model = CeasarCipher(key)
 			except ValueError:
-				print('Enter Valid Key in numbers')
+				print('\nEnter Valid Key in numbers')
 				break
 			while True:
-				print('\npress 1 for encryption\n2 for decryption\n3 for quit')
+				print('''
+1. encryption
+2. decryption
+3. quit
+				''')
 				while True:
 					try:
-						inp = int(input('\n\t'))
+						inp = int(input('\n'))
 						break
 					except ValueError:
 						print('Enter Valid option')
 				if inp == 1:
-					print('\ntype in the string you want to encrpyt\n')
+					print('type in the string you want to encrpyt\n')
 					enc_str = input('\t')
-					print('Encrypted String :\t%s'%enc_model.encrypt(enc_str))
+					print('Encrypted String : %s'%enc_model.encrypt(enc_str))
 				if inp == 2:
 					print('\ntype in the string you want to decrpyt\n')
 					enc_str = input('\t')
-					print('Decrypted String :\t%s'%enc_model.decrypt(enc_str))
+					print('Decrypted String : %s'%enc_model.decrypt(enc_str))
 				if inp == 3:
 					exit()
 

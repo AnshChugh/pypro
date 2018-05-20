@@ -15,7 +15,7 @@ class CeasarCipher:
 		enc_msg = []
 		for char in msg:
 			try:
-				i = self.enc_list.index(char) # this will return ValueError if char is not in self.enc_list
+				i = self.enc_list.index(char) # this will return ValueError if char is not in enc_list
 				if mode == 'encrypt':
 					enc_msg.append(self.enc_list[i + self.enc_key])
 				elif mode == 'decrypt':
